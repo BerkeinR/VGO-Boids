@@ -15,6 +15,8 @@ namespace Model
 
         public static readonly RangedDoubleParameter Height = new RangedDoubleParameter("Height", 1000, 100, 10000);
 
+
+
         public World()
         {
             this.Population = new ObservableCollection<Boid>();

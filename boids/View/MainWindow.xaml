@@ -6,22 +6,36 @@
         xmlns:local="clr-namespace:View"
         mc:Ignorable="d"
         Title="MainWindow" Height="350" Width="525">
-    <ItemsControl ItemsSource="{Binding Simulation.World.Population}">
-        <ItemsControl.ItemsPanel>
-            <ItemsPanelTemplate>
-                <Canvas />
-            </ItemsPanelTemplate>
-        </ItemsControl.ItemsPanel>
-        <ItemsControl.ItemContainerStyle>
-            <Style TargetType="{x:Type ContentPresenter}">
-                <Setter Property="Canvas.Left" Value="{Binding Position.Value.X}" />
-                <Setter Property="Canvas.Top" Value="{Binding Position.Value.Y}" />
-            </Style>
-        </ItemsControl.ItemContainerStyle>
-        <ItemsControl.ItemTemplate>
-            <DataTemplate>
-                <Ellipse Fill="Red"  Width="25" Height="25" />
-            </DataTemplate>
-        </ItemsControl.ItemTemplate>
-    </ItemsControl>
+    <DockPanel>
+        <StackPanel DockPanel.Dock="Top" Orientation="Horizontal" Background="FloralWhite" Height="49">
+            <Button>Add</Button>
+            <Button>B</Button>
+            
+        </StackPanel>
+        <StackPanel DockPanel.Dock="Right" Orientation="Vertical" Background="FloralWhite" Width="47">
+            <Button>A</Button>
+            <Button>B</Button>
+            <Button>C</Button>
+        </StackPanel>
+        <Viewbox Stretch="Fill">
+            <ItemsControl ItemsSource="{Binding Simulation.World.Population}">
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <Canvas Width="1500" Height="1000" />
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+                <ItemsControl.ItemContainerStyle>
+                    <Style TargetType="{x:Type ContentPresenter}">
+                        <Setter Property="Canvas.Left" Value="{Binding Position.Value.X}" />
+                        <Setter Property="Canvas.Top" Value="{Binding Position.Value.Y}" />
+                    </Style>
+                </ItemsControl.ItemContainerStyle>
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <Ellipse Fill="Red"  Width="25" Height="25" />
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </Viewbox>
+    </DockPanel>
 </Window>
