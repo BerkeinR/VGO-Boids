@@ -6,6 +6,9 @@
         xmlns:local="clr-namespace:View"
         mc:Ignorable="d"
         Title="MainWindow" Height="350" Width="525">
+    <Window.Resources>
+        <local:SpeciesToColorConverter x:Key="typeToBrush" />
+    </Window.Resources>
     <DockPanel>
         <StackPanel DockPanel.Dock="Top" Orientation="Horizontal" Background="FloralWhite" Height="49">
             <Button>Add</Button>
@@ -32,7 +35,7 @@
                 </ItemsControl.ItemContainerStyle>
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
-                        <Ellipse Fill="Red"  Width="25" Height="25" />
+                        <Ellipse Fill="{Binding ., Converter={StaticResource typeToBrush}}"  Width="25" Height="25" />
                     </DataTemplate>
                 </ItemsControl.ItemTemplate>
             </ItemsControl>

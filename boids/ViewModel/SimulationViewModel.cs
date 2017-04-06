@@ -35,12 +35,12 @@ namespace ViewModel
             this.sim.Species[1].CreateBoid(new Vector2D(150, 150));
             var timer = ServiceLocator.Current.GetInstance<ITimerService>();
             timer.Tick += Timer_Tick;
-            timer.Start(new TimeSpan(0, 0, 0, 0, 20));
+            timer.Start(new TimeSpan(0, 0, 0, 0, 15));
         }
 
         private void Timer_Tick(ITimerService obj)
         {
-            sim.Update(0.02);
+            sim.Update(0.01);
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
