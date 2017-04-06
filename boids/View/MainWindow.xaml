@@ -5,20 +5,21 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:View"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
+        Title="MainWindow" Height="500" Width="750">
     <Window.Resources>
         <local:SpeciesToColorConverter x:Key="typeToBrush" />
     </Window.Resources>
     <DockPanel>
-        <StackPanel DockPanel.Dock="Top" Orientation="Horizontal" Background="FloralWhite" Height="49">
-            <Button>Add</Button>
-            <Button>B</Button>
-            
+        <StackPanel DockPanel.Dock="Top" Orientation="Horizontal" Background="LightGray" Height="60
+                    ">
+            <Button Margin="20,15,0,15">Add</Button>
+            <Button Margin="20,15,0,15">Rem</Button>
+            <!--<Button Margin="20,15,0,15" Command="{Binding Exit}">Click to Exit</Button>-->
+
         </StackPanel>
-        <StackPanel DockPanel.Dock="Right" Orientation="Vertical" Background="FloralWhite" Width="47">
-            <Button>A</Button>
-            <Button>B</Button>
-            <Button>C</Button>
+        <StackPanel DockPanel.Dock="Right" Orientation="Vertical" Background="LightGray" Width="120
+                    ">
+            <Button Margin="0,50,0,0" Content="A"/>
         </StackPanel>
         <Viewbox Stretch="Fill">
             <ItemsControl ItemsSource="{Binding Sim.World.Population}">
