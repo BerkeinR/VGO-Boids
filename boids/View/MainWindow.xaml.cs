@@ -29,16 +29,16 @@ namespace View
 
             // WARNING: THIS CODE VIOLATES MVVM PRINCIPLES
             // IT IS FOR ILLUSTRATIVE PURPOSES ONLY
-            this.Simulation = new Simulation();
-            this.Simulation.Species[0].CreateBoid(new Vector2D(50, 50));
-            this.Simulation.Species[1].CreateBoid(new Vector2D(150, 150));
-            this.DataContext = this;
+           // this.Simulation = new Simulation();
+           // this.Simulation.Species[0].CreateBoid(new Vector2D(50, 50));
+           // this.Simulation.Species[1].CreateBoid(new Vector2D(150, 150));
+           // this.DataContext = this;
 
             // Using the timer like this will yield choppy animation
-            var timer = new DispatcherTimer(TimeSpan.FromMilliseconds(20), DispatcherPriority.Render, (x, y) => { this.Simulation.Update(0.02); }, this.Dispatcher);
-            timer.Start();
+            //var timer = new DispatcherTimer(TimeSpan.FromMilliseconds(20), DispatcherPriority.Render, (x, y) => { this.Simulation.Update(0.02); }, this.Dispatcher);
+            //timer.Start();
         }
 
-        public Simulation Simulation { get; }
+        //public Simulation Simulation { get; }
     }
 }

@@ -18,7 +18,7 @@
             <Button>C</Button>
         </StackPanel>
         <Viewbox Stretch="Fill">
-            <ItemsControl ItemsSource="{Binding Simulation.World.Population}">
+            <ItemsControl ItemsSource="{Binding Sim.World.Population}">
                 <ItemsControl.ItemsPanel>
                     <ItemsPanelTemplate>
                         <Canvas Width="1500" Height="1000" />

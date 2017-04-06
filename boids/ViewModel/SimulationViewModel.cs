@@ -31,7 +31,6 @@ namespace ViewModel
             this.sim = new Simulation();
             this.sim.Species[0].CreateBoid(new Vector2D(50, 50));
             this.sim.Species[1].CreateBoid(new Vector2D(150, 150));
-            sim.Update(0.02);
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
