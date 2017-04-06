@@ -6,7 +6,10 @@ using System.Threading.Tasks;
 
 namespace Service
 {
-    class ITimerService
+   public interface ITimerService
     {
+        event Action<ITimerService> Tick;
+        void Start(TimeSpan interval);
+        void Stop();
     }
 }

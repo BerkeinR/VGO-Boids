@@ -8,6 +8,7 @@ using System.Windows;
 using ViewModel;
 using Microsoft.Practices.Unity;
 using Service;
+using Microsoft.Practices.ServiceLocation;
 
 namespace View
 {
@@ -20,6 +21,8 @@ namespace View
         {
             var container = new UnityContainer();
             container.RegisterType<ITimerService, TimerService>();
+            UnityServiceLocator locator = new UnityServiceLocator(container);
+            ServiceLocator.SetLocatorProvider(() => locator);
 
             base.OnStartup(e);
             var main = new MainWindow();

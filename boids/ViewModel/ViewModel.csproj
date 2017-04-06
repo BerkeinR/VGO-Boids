@@ -66,6 +66,10 @@
       <Project>{f3a8833f-be9c-40c1-a9bd-f3e009b65070}</Project>
       <Name>Model</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Service\Service.csproj">
+      <Project>{63c1ba36-e514-4c57-95e0-e271979d9dbc}</Project>
+      <Name>Service</Name>
+    </ProjectReference>
     <ProjectReference Include="..\VGOLibrary\VGOLibrary.csproj">
       <Project>{b30bdbf3-0fef-4ae2-a7df-791a2a669534}</Project>
       <Name>VGOLibrary</Name>
