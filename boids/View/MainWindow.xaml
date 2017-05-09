@@ -12,8 +12,8 @@
     <DockPanel>
         <StackPanel DockPanel.Dock="Top" Orientation="Horizontal" Background="LightGray" Height="60
                     ">
-            <Button Margin="20,15,0,15">Add</Button>
-            <Button Margin="20,15,0,15">Rem</Button>
+            <Button Command="{Binding AddBoid}" CommandParameter="prey" Margin="20,15,0,15">Add Prey</Button>
+            <Button Command="{Binding AddBoid}" CommandParameter="hunter" Margin="20,15,0,15">Add Hunter</Button>
             <!--<Button Margin="20,15,0,15" Command="{Binding Exit}">Click to Exit</Button>-->
 
         </StackPanel>
@@ -22,7 +22,7 @@
             <Button Margin="0,50,0,0" Content="A"/>
         </StackPanel>
         <Viewbox Stretch="Fill">
-            <ItemsControl ItemsSource="{Binding Sim.World.Population}">
+            <ItemsControl ItemsSource="{Binding sim.World.Population}">
                 <ItemsControl.ItemsPanel>
                     <ItemsPanelTemplate>
                         <Canvas Width="1500" Height="1000" />

@@ -9,44 +9,44 @@ using System.ComponentModel;
 using Microsoft.Practices.ServiceLocation;
 using Service;
 using System.Windows.Input;
+using Cells;
+using Bindings;
 
 namespace ViewModel
 {
     public class SimulationViewModel : INotifyPropertyChanged
     {
 
-        private Simulation sim;
+        public Simulation sim { get; set; }
 
-        public Simulation Sim
-        {
-            get
-            {
-                return sim;
-            }
-            set
-            {
-                sim = value;
-            }
-        }
+        public ICommand AddBoid { get; set; }
+        public Cell<double> speedCell { get; set; }
 
         public SimulationViewModel()
         {
             this.sim = new Simulation();
 
+            AddBoid = new AddBoid(this);
+            speedCell = Cell.Create(100.0);
+
             this.sim.Species[0].CreateBoid(new Vector2D(50, 50));
-            this.sim.Species[0].CreateBoid(new Vector2D(250, 250));
-            this.sim.Species[0].CreateBoid(new Vector2D(500, 500));
-            this.sim.Species[0].CreateBoid(new Vector2D(750, 750));
-            this.sim.Species[0].CreateBoid(new Vector2D(1000, 1000));
-            this.sim.Species[0].CreateBoid(new Vector2D(1200, 1200));
             this.sim.Species[1].CreateBoid(new Vector2D(150, 150));
+
             var timer = ServiceLocator.Current.GetInstance<ITimerService>();
             timer.Tick += Timer_Tick;
             timer.Start(new TimeSpan(0, 0, 0, 0, 15));
+
+            var bindings = sim.Species.First().Bindings;
+            var pars = bindings.Parameters;
+            var speed  = pars.Where(c => c.Id == "MAximum speed").Single();
+            var rangedDoubleSpeed = speed as RangedDoubleParameter;
+            var value = bindings.Read(rangedDoubleSpeed);
+            value.Value = speedCell.Value;
         }
 
         private void Timer_Tick(ITimerService obj)
         {
+
             sim.Update(0.01);
         }
 
