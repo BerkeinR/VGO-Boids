@@ -20,6 +20,16 @@
         <StackPanel DockPanel.Dock="Right" Orientation="Vertical" Background="LightGray" Width="120
                     ">
             <Button Margin="0,50,0,0" Content="A"/>
+            <ComboBox x:Name="FirstOne" ItemsSource="{Binding boxTest.FirstComboValues}" SelectedItem="{Binding boxTest.FirstSelectedValue, Mode=TwoWay}">
+            </ComboBox>
+            <ItemsControl ItemsSource="{Binding boxTest.parameters}">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <Slider VerticalAlignment="Bottom" Minimum="1" Maximum="100"></Slider>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+            
         </StackPanel>
         <Viewbox Stretch="Fill">
             <ItemsControl ItemsSource="{Binding sim.World.Population}">
