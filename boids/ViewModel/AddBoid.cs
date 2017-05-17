@@ -10,11 +10,11 @@ namespace ViewModel
 {
     class AddBoid : ICommand
     {
-        private SimulationViewModel viewModel;
+        private SimulationViewModel simVM;
 
-        public AddBoid(SimulationViewModel viewModel)
+        public AddBoid(SimulationViewModel simVM)
         {
-            this.viewModel = viewModel;
+            this.simVM = simVM;
         }
 
         public event EventHandler CanExecuteChanged;
@@ -29,10 +29,10 @@ namespace ViewModel
             switch ((String)parameter)
             {
                 case "hunter":
-                    viewModel.sim.Species[0].CreateBoid(new Vector2D(100, 200));
+                    simVM.sim.Species[0].CreateBoid(new Vector2D(100, 200));
                     break;
                 case "prey":
-                    viewModel.sim.Species[1].CreateBoid(new Vector2D(100, 200));
+                    simVM.sim.Species[1].CreateBoid(new Vector2D(100, 200));
                     break;
             }
         }

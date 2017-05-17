@@ -14,22 +14,27 @@
                     ">
             <Button Command="{Binding AddBoid}" CommandParameter="prey" Margin="20,15,0,15">Add Prey</Button>
             <Button Command="{Binding AddBoid}" CommandParameter="hunter" Margin="20,15,0,15">Add Hunter</Button>
+            <Button Command="{Binding timer}"  Margin="20,15,0,15">Pause</Button>
+            <Button Command="{Binding resetBoid}"  Margin="20,15,0,15">Reset</Button>
+            <Button Command="{Binding exit}"  Margin="20,15,0,15">Exit</Button>
             <!--<Button Margin="20,15,0,15" Command="{Binding Exit}">Click to Exit</Button>-->
 
         </StackPanel>
         <StackPanel DockPanel.Dock="Right" Orientation="Vertical" Background="LightGray" Width="120
                     ">
             <Button Margin="0,50,0,0" Content="A"/>
-            <ComboBox x:Name="FirstOne" ItemsSource="{Binding boxTest.FirstComboValues}" SelectedItem="{Binding boxTest.FirstSelectedValue, Mode=TwoWay}">
+            <ComboBox x:Name="FirstOne" ItemsSource="{Binding manager.FirstComboValues}" SelectedItem="{Binding manager.FirstSelectedValue, Mode=TwoWay}">
             </ComboBox>
-            <ItemsControl ItemsSource="{Binding boxTest.parameters}">
+            <ItemsControl ItemsSource="{Binding manager.parameters}">
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
-                        <Slider VerticalAlignment="Bottom" Minimum="1" Maximum="100"></Slider>
+                        <StackPanel>
+                        <TextBlock Text="{Binding Id}"></TextBlock>
+                            <Slider Value="{Binding paramContent.Value}" Minimum="{Binding minimum}" Maximum="{Binding maximum}"></Slider>
+                        </StackPanel>
                     </DataTemplate>
                 </ItemsControl.ItemTemplate>
             </ItemsControl>
-            
         </StackPanel>
         <Viewbox Stretch="Fill">
             <ItemsControl ItemsSource="{Binding sim.World.Population}">

@@ -9,10 +9,11 @@ using System.ComponentModel;
 using System.Collections.ObjectModel;
 using Model.Species;
 using Bindings;
+using Cells;
 
 namespace ViewModel
 {
-    public class ComboBoxTest : INotifyPropertyChanged
+    public class SliderManager : INotifyPropertyChanged
     {
         private SimulationViewModel simulationvm;
         protected string m_FirstSelectedValue;
@@ -48,32 +49,42 @@ namespace ViewModel
             }
         }
 
-        public ObservableCollection<IParameter> parameters { get; set; }
+        public ObservableCollection<ParameterWrapper> parameters { get; set; }
 
-        public ComboBoxTest(SimulationViewModel simulationvm)
+        public SliderManager(SimulationViewModel simulationvm)
         {
-            FirstComboValues = new ObservableCollection<BoidSpecies>(simulationvm.sim.Species);
             this.simulationvm = simulationvm;
             m_FirstComboValues = new ObservableCollection<BoidSpecies>(simulationvm.sim.Species);
+            parameters = new ObservableCollection<ParameterWrapper>();
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
 
         protected void NotifyPropertyChanged(string propertyName)
         {
-            Console.WriteLine(propertyName);
             if (PropertyChanged != null)
                 PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
         }
 
         public void UpdateParameterSliders(String type)
         {
-            if(type.Equals("Model.Species.HunterSpecies"))
-            {
-                var bindings = simulationvm.sim.Species.First().Bindings;
+            var selectedSpecies = simulationvm.sim.Species.Where(s => s.Name == type).Single();
+
+            var bindings = selectedSpecies.Bindings;
                 var pars = bindings.Parameters;
-                
-                parameters = new ObservableCollection<IParameter>(pars);
+                parameters.Clear();
+                foreach (var data in pars)
+                {
+                Console.WriteLine(data);
+                    if (data is RangedDoubleParameter)
+                    {
+                        var d = (RangedDoubleParameter)data;
+                        
+                        var paramContent = selectedSpecies.Bindings.Read(d);
+
+                        parameters.Add(new ParameterWrapper(paramContent, d.Maximum, d.Minimum, d.Id));
+
+                }
             }
         }
     }

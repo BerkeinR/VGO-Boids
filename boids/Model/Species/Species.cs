@@ -41,5 +41,10 @@ namespace Model.Species
 
             return boid;
         }
+
+        public override string ToString()
+        {
+            return Name;
+        }
     }
 }
