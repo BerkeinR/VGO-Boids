@@ -30,8 +30,8 @@
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
                         <StackPanel>
-                            <TextBlock Text="{Binding id}" FontFamily="Candara" Foreground="White"></TextBlock>
-                            <Slider Value="{Binding paramContent.Value}" Minimum="{Binding minimum}" Maximum="{Binding maximum}"></Slider>
+                            <TextBlock Text="{Binding id}" FontFamily="Candara" Foreground="White" FontSize="14"></TextBlock>
+                            <Slider Value="{Binding paramContent.Value}" Minimum="{Binding minimum}" Maximum="{Binding maximum}" Cursor="Hand" ></Slider>
                         </StackPanel>
                     </DataTemplate>
                 </ItemsControl.ItemTemplate>

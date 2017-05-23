@@ -41,7 +41,6 @@ namespace ViewModel
 
             this.sim.Species[0].CreateBoid(new Vector2D(50, 50));
             this.sim.Species[1].CreateBoid(new Vector2D(150, 150));
-            this.sim.Species[2].CreateBoid(new Vector2D(150, 250));
 
             //var bindings = sim.Species.First().Bindings;
             //var pars = bindings.Parameters;
