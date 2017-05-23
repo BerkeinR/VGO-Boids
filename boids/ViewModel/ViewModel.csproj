@@ -58,6 +58,7 @@
   <ItemGroup>
     <Compile Include="AddBoid.cs" />
     <Compile Include="BoidViewModel.cs" />
+    <Compile Include="exitCommand.cs" />
     <Compile Include="SliderManager.cs" />
     <Compile Include="ParameterWrapper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

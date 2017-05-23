@@ -75,7 +75,6 @@ namespace ViewModel
                 parameters.Clear();
                 foreach (var data in pars)
                 {
-                Console.WriteLine(data);
                     if (data is RangedDoubleParameter)
                     {
                         var d = (RangedDoubleParameter)data;

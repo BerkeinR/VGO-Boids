@@ -16,7 +16,7 @@ namespace ViewModel
 
         public String id { get; }
 
-        public ParameterWrapper(Cell<Double> paramContent, Double maximum, Double minimum, String Id)
+        public ParameterWrapper(Cell<Double> paramContent, Double maximum, Double minimum, String id)
         {
             this.paramContent = paramContent;
             this.maximum = maximum;

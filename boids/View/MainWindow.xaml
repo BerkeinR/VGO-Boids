@@ -10,34 +10,36 @@
         <local:SpeciesToColorConverter x:Key="typeToBrush" />
     </Window.Resources>
     <DockPanel>
-        <StackPanel DockPanel.Dock="Top" Orientation="Horizontal" Background="LightGray" Height="60
+        <StackPanel DockPanel.Dock="Top" Orientation="Horizontal" Background="#3a5068" Height="60
                     ">
-            <Button Command="{Binding AddBoid}" CommandParameter="prey" Margin="20,15,0,15">Add Prey</Button>
-            <Button Command="{Binding AddBoid}" CommandParameter="hunter" Margin="20,15,0,15">Add Hunter</Button>
-            <Button Command="{Binding timer}"  Margin="20,15,0,15">Pause</Button>
-            <Button Command="{Binding resetBoid}"  Margin="20,15,0,15">Reset</Button>
-            <Button Command="{Binding exit}"  Margin="20,15,0,15">Exit</Button>
+            <Button Command="{Binding AddBoid}" CommandParameter="prey" Margin="0,0,0,0" Height="60" Width="90" Background="#bee6fd" FontFamily="Candara" FontSize="17">Add Prey</Button>
+            <Button Command="{Binding AddBoid}" CommandParameter="hunter" Margin="15,0,0,0" Height="60" Width="90" Background="#bee6fd" FontFamily="Candara" FontSize="17">Add Hunter</Button>
+            <Button Command="{Binding AddBoid}" CommandParameter="leech" Margin="15,0,0,0" Height="60" Width="90" Background="#bee6fd" FontFamily="Candara" FontSize="17">Add Leech</Button>
+            <Button Command="{Binding timer}"  Margin="30,0,0,0" Height="60" Width="90" Background="#bee6fd" FontFamily="Candara" FontSize="17">Pause</Button>
+            <Button Command="{Binding exitCommand}"  Margin="224,0,0,0" Height="60" Width="90" Background="#bee6fd" FontFamily="Candara" FontSize="17">Exit</Button>
             <!--<Button Margin="20,15,0,15" Command="{Binding Exit}">Click to Exit</Button>-->
 
         </StackPanel>
-        <StackPanel DockPanel.Dock="Right" Orientation="Vertical" Background="LightGray" Width="120
+        <StackPanel DockPanel.Dock="Right" Orientation="Vertical" Background="#3a5068" Width="120
                     ">
-            <Button Margin="0,50,0,0" Content="A"/>
-            <ComboBox x:Name="FirstOne" ItemsSource="{Binding manager.FirstComboValues}" SelectedItem="{Binding manager.FirstSelectedValue, Mode=TwoWay}">
+            <TextBlock FontFamily="Candara" FontSize="18" Foreground="White">Parameters:</TextBlock>
+            <ComboBox x:Name="FirstOne" ItemsSource="{Binding manager.FirstComboValues}" SelectedItem="{Binding manager.FirstSelectedValue, Mode=TwoWay}" FontFamily="Candara">
             </ComboBox>
+            <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Hidden">
             <ItemsControl ItemsSource="{Binding manager.parameters}">
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
                         <StackPanel>
-                        <TextBlock Text="{Binding Id}"></TextBlock>
+                            <TextBlock Text="{Binding id}" FontFamily="Candara" Foreground="White"></TextBlock>
                             <Slider Value="{Binding paramContent.Value}" Minimum="{Binding minimum}" Maximum="{Binding maximum}"></Slider>
                         </StackPanel>
                     </DataTemplate>
                 </ItemsControl.ItemTemplate>
             </ItemsControl>
+            </ScrollViewer>
         </StackPanel>
         <Viewbox Stretch="Fill">
-            <ItemsControl ItemsSource="{Binding sim.World.Population}">
+            <ItemsControl ItemsSource="{Binding sim.World.Population}" BorderBrush="#671f79" BorderThickness="7">
                 <ItemsControl.ItemsPanel>
                     <ItemsPanelTemplate>
                         <Canvas Width="1500" Height="1000" />

@@ -20,9 +20,12 @@ namespace View
             {
                 return Brushes.Red;
             }
+            else if(boid.Species is LeechSpecies)
+            {
+                return Brushes.Blue;
+            }
             else
             {
-                Console.WriteLine(value);
                 return Brushes.Green;
             }
         }

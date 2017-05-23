@@ -29,12 +29,22 @@ namespace ViewModel
             switch ((String)parameter)
             {
                 case "hunter":
-                    simVM.sim.Species[0].CreateBoid(new Vector2D(100, 200));
+                    simVM.sim.Species[0].CreateBoid(new Vector2D(generateRandom(1500), generateRandom(1000)));
                     break;
                 case "prey":
-                    simVM.sim.Species[1].CreateBoid(new Vector2D(100, 200));
+                    simVM.sim.Species[1].CreateBoid(new Vector2D(generateRandom(1500), generateRandom(1000)));
+                    break;
+                case "leech":
+                    simVM.sim.Species[2].CreateBoid(new Vector2D(generateRandom(1500), generateRandom(1000)));
                     break;
             }
+        }
+
+        public int generateRandom(int range)
+        {
+            Random r = new Random();
+            int rInt = r.Next(0, range);
+            return rInt;
         }
     }
 }
