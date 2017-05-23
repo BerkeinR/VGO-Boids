@@ -44,6 +44,7 @@ namespace ViewModel
         {
             Random r = new Random();
             int rInt = r.Next(0, range);
+            Console.WriteLine(rInt);
             return rInt;
         }
     }
