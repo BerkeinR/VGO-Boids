@@ -25,6 +25,7 @@ namespace ViewModel
         public SliderManager manager { get; set; }
         public ICommand timer { get; set; }
         public ICommand resetBoid { get; set; }
+        public event Action ApplicationExit;
 
         public SimulationViewModel()
         {
@@ -34,7 +35,7 @@ namespace ViewModel
             AddBoid = new AddBoid(this);
             resetBoid = new ResetBoidViewModel(this);
 
-            exitCommand = new exitCommand(this);
+            exitCommand = new ExitCommand(this);
 
             speedCell = Cell.Create(100.0);
             manager = new SliderManager(this);
@@ -42,13 +43,30 @@ namespace ViewModel
             this.sim.Species[0].CreateBoid(new Vector2D(50, 50));
             this.sim.Species[1].CreateBoid(new Vector2D(150, 150));
 
-            //var bindings = sim.Species.First().Bindings;
-            //var pars = bindings.Parameters;
-            //var speed  = pars.Where(c => c.Id == "Maximum speed").Single();
-            //var rangedDoubleSpeed = speed as RangedDoubleParameter;
-            //var value = bindings.Read(rangedDoubleSpeed);
-            //value.Value = speedCell.Value;
         }
+
+        private class ExitCommand : ICommand
+        {
+            private SimulationViewModel simVM;
+
+            public ExitCommand(SimulationViewModel simVM)
+            {
+                this.simVM = simVM;
+            }
+
+            public event EventHandler CanExecuteChanged;
+
+            public bool CanExecute(object parameter)
+            {
+                return true;
+            }
+
+            public void Execute(object parameter)
+            {
+                simVM.ApplicationExit?.Invoke();
+            }
+        }
+
 
         public event PropertyChangedEventHandler PropertyChanged;
     }

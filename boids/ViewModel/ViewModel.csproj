@@ -58,14 +58,12 @@
   <ItemGroup>
     <Compile Include="AddBoid.cs" />
     <Compile Include="BoidViewModel.cs" />
-    <Compile Include="exitCommand.cs" />
     <Compile Include="SliderManager.cs" />
     <Compile Include="ParameterWrapper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ResetBoidViewModel.cs" />
     <Compile Include="SimulationViewModel.cs" />
     <Compile Include="TimeManagerViewModel.cs" />
-    <Compile Include="WorldViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Model\Model.csproj">

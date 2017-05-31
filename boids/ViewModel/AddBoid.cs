@@ -42,10 +42,10 @@ namespace ViewModel
 
         public int generateRandom(int range)
         {
-            Random r = new Random();
             int rInt = r.Next(0, range);
             Console.WriteLine(rInt);
             return rInt;
         }
+        private Random r = new Random();
     }
 }

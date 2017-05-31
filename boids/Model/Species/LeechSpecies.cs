@@ -43,14 +43,14 @@ namespace Model.Species
 
         private class ArtificialIntelligence : Model.AI.ArtificialIntelligence
         {
-            private readonly IForce enemyForce;
+            private readonly IForce secondfriendForce;
 
             private readonly IForce friendForce;
 
             public ArtificialIntelligence(World world, Boid self)
                 : base(world, self)
             {
-                enemyForce = new BoidAttractionForce(HunterAttractionConstant, HunterAttractionExponent, SecondFriendSpecies);
+                secondfriendForce = new BoidAttractionForce(HunterAttractionConstant, HunterAttractionExponent, SecondFriendSpecies);
                 friendForce = new BoidAttractionForce(PreyAttractionConstant, PreyAttractionExponent, FriendSpecies);
             }
 
@@ -58,7 +58,7 @@ namespace Model.Species
             {
                 var total = new Vector2D(0, 0);
 
-                total += enemyForce.Compute(this.self.Bindings, this.world, this.self);
+                total += secondfriendForce.Compute(this.self.Bindings, this.world, this.self);
                 total += friendForce.Compute(this.self.Bindings, this.world, this.self);
 
                 return total;

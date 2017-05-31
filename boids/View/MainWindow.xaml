@@ -5,23 +5,28 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:View"
         mc:Ignorable="d"
-        Title="MainWindow" Height="500" Width="750">
+        Title="MainWindow" Height="500" Width="784">
     <Window.Resources>
         <local:SpeciesToColorConverter x:Key="typeToBrush" />
     </Window.Resources>
     <DockPanel>
-        <StackPanel DockPanel.Dock="Top" Orientation="Horizontal" Background="#3a5068" Height="60
-                    ">
-            <Button Command="{Binding AddBoid}" CommandParameter="prey" Margin="0,0,0,0" Height="60" Width="90" Background="#bee6fd" FontFamily="Candara" FontSize="17">Add Prey</Button>
-            <Button Command="{Binding AddBoid}" CommandParameter="hunter" Margin="15,0,0,0" Height="60" Width="90" Background="#bee6fd" FontFamily="Candara" FontSize="17">Add Hunter</Button>
-            <Button Command="{Binding AddBoid}" CommandParameter="leech" Margin="15,0,0,0" Height="60" Width="90" Background="#bee6fd" FontFamily="Candara" FontSize="17">Add Leech</Button>
-            <Button Command="{Binding timer}"  Margin="30,0,0,0" Height="60" Width="90" Background="#bee6fd" FontFamily="Candara" FontSize="17">Pause</Button>
-            <Button Command="{Binding exitCommand}"  Margin="224,0,0,0" Height="60" Width="90" Background="#bee6fd" FontFamily="Candara" FontSize="17">Exit</Button>
-            <!--<Button Margin="20,15,0,15" Command="{Binding Exit}">Click to Exit</Button>-->
+        <Grid  DockPanel.Dock="Top"  Background="#3a5068">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="auto"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <StackPanel Orientation="Horizontal" Height="60" Grid.Column="0">
+                <Button Command="{Binding AddBoid}" CommandParameter="prey" Margin="0,0,0,0" Height="60" Width="90" Background="#bee6fd" FontFamily="Candara" FontSize="17">Add Prey</Button>
+                <Button Command="{Binding AddBoid}" CommandParameter="hunter" Margin="15,0,0,0" Height="60" Width="90" Background="#bee6fd" FontFamily="Candara" FontSize="17">Add Hunter</Button>
+                <Button Command="{Binding AddBoid}" CommandParameter="leech" Margin="15,0,0,0" Height="60" Width="90" Background="#bee6fd" FontFamily="Candara" FontSize="17">Add Leech</Button>
+                <Button Command="{Binding timer}"  Margin="30,0,0,0" Height="60" Width="90" Background="#bee6fd" FontFamily="Candara" FontSize="17">Pause</Button>
+                <!--<Button Margin="20,15,0,15" Command="{Binding Exit}">Click to Exit</Button>-->
 
-        </StackPanel>
-        <StackPanel DockPanel.Dock="Right" Orientation="Vertical" Background="#3a5068" Width="120
-                    ">
+            </StackPanel>
+            <Button Command="{Binding exitCommand}"  Margin="224,0,0,0" Height="60" Width="90" Background="#bee6fd" FontFamily="Candara" FontSize="17" Grid.Column="1">Exit</Button>
+
+        </Grid>
+        <StackPanel DockPanel.Dock="Right" Orientation="Vertical" Background="#3a5068" Width="144">
             <TextBlock FontFamily="Candara" FontSize="18" Foreground="White">Parameters:</TextBlock>
             <ComboBox x:Name="FirstOne" ItemsSource="{Binding manager.FirstComboValues}" SelectedItem="{Binding manager.FirstSelectedValue, Mode=TwoWay}" FontFamily="Candara">
             </ComboBox>

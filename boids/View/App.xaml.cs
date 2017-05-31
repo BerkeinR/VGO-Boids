@@ -9,6 +9,8 @@ using ViewModel;
 using Microsoft.Practices.Unity;
 using Service;
 using Microsoft.Practices.ServiceLocation;
+using System.Media;
+using System.IO;
 
 namespace View
 {
@@ -26,8 +28,23 @@ namespace View
 
             base.OnStartup(e);
             var main = new MainWindow();
-            main.DataContext = new SimulationViewModel();
+            var vm = new SimulationViewModel();
+            vm.ApplicationExit += ExitCommand_ApplicationExit;
+            main.DataContext = vm;
             main.Show();
+            Play();
+
+        }
+          private readonly SoundPlayer player = new SoundPlayer(View.Properties.Resources.music);
+
+        public void Play()
+        {
+            player.Play();
+        }
+
+        private void ExitCommand_ApplicationExit()
+        {
+            Application.Current.Shutdown();
         }
     }
 }
